@@ -11,7 +11,8 @@
 		<typeAlias type="java.lang.String" alias="str" />
 		<typeAlias type="java.lang.Integer" alias="int" />
 		
-<!-- 		<typeAlias type="com.jsp.dto.MemberVO"  alias="member"/>	 -->
+		<typeAlias type="com.jsp.dto.WorkBoardVO"  alias="workBoard"/>	
+		<typeAlias type="com.jsp.dto.WorkFileVO"  alias="workFile"/>	
 		
 	</typeAliases>
 	
@@ -32,7 +33,9 @@
 	</environments>
 	
 	<mappers>
-<!-- 		<mapper resource="com/jsp/mybatis/mappers/Member-Mapper.xml"/> -->
+		<mapper resource="com/jsp/mybatis/mappers/WorkBoard-Mapper.xml"/>
+		<mapper resource="com/jsp/mybatis/mappers/WorkFile-Mapper.xml"/>
+<!-- 		<mapper resource="com/jsp/mybatis/mappers/WReply-Mapper.xml"/> -->
 	</mappers>
 	
 </configuration>

@@ -6,14 +6,15 @@
 		  class="com.jsp.datasource.OracleMybatisSqlSessionFactory" />
 
 	<!-- Repository -->
-<!-- 	<bean id="memberDAO" class="com.jsp.dao.MemberDAOImpl" /> -->
+	<bean id="workBoardDAO" class="com.jsp.dao.WorkBoardDAOImpl" />
+	<bean id="workFileDAO" class="com.jsp.dao.WorkFileDAOImpl" />
 	
 	<!-- Service -->
-<!-- 	<bean id="replyService" class="com.jsp.service.ReplyServiceImpl" > -->
-<!-- 		<property name="sqlSessionFactory" ref-value="sqlSessionFactory" /> -->
-<!-- 		<property name="replyDAO" ref-value="replyDAO" />		 -->
-<!-- 		<property name="memberDAO" ref-value="searchMemberDAO" />		 -->
-<!-- 	</bean> -->
+	<bean id="workBoardService" class="com.jsp.service.WorkBoardServiceImpl" >
+		<property name="sqlSessionFactory" ref-value="sqlSessionFactory" />
+		<property name="workBoardDAO" ref-value="workBoardDAO" />		
+		<property name="workFileDAO" ref-value="workFileDAO" />		
+	</bean>
 	      
 	      
 
