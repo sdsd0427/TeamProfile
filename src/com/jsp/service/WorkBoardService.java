@@ -28,7 +28,7 @@ public interface WorkBoardService {
 	WorkBoardVO read(int wno) throws SQLException;
 	
 	//첨부파일 조회
-	WorkFileVO getAttachByAno(int w_ano)throws SQLException;
+	WorkFileVO getWorkFileByWAno(int w_ano)throws SQLException;
 	
 	//파일정보 삭제
 	void removeAttachByAno(int w_ano)throws SQLException;

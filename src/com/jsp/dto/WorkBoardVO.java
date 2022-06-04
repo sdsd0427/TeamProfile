@@ -7,12 +7,12 @@ public class WorkBoardVO {
 	private int wno;
 	private String title;
 	private String content;
-	private Date regdate;
+	private Date regDate;
 	private int viewcnt;
 	private Date updatedate;
 	private String writer;
 	
-	private int replycnt;
+	private int wreplycnt;
 	
 	private List<WorkFileVO> workFileList;
 
@@ -40,12 +40,12 @@ public class WorkBoardVO {
 		this.content = content;
 	}
 
-	public Date getRegdate() {
-		return regdate;
+	public Date getRegDate() {
+		return regDate;
 	}
 
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
 	}
 
 	public int getViewcnt() {
@@ -72,12 +72,12 @@ public class WorkBoardVO {
 		this.writer = writer;
 	}
 
-	public int getReplycnt() {
-		return replycnt;
+	public int getWreplycnt() {
+		return wreplycnt;
 	}
 
-	public void setReplycnt(int replycnt) {
-		this.replycnt = replycnt;
+	public void setWreplycnt(int wreplycnt) {
+		this.wreplycnt = wreplycnt;
 	}
 
 	public List<WorkFileVO> getWorkFileList() {

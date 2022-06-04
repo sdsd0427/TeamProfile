@@ -4,7 +4,7 @@
     
 <script>
 	if('${loginUser.name}'){
-		location.href="index.do";
+		location.href="workBoard/list.do";
 	} else {
 		location.href="common/loginForm.do";
 	}

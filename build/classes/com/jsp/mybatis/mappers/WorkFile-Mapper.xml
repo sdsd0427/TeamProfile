@@ -19,8 +19,7 @@
 	<update id="insertWorkFile">
 		insert into 
 		work_file (w_ano, uploadpath, filename, filetype, wno)
-		values (workfile_seq.nextval, #{uploadPath}, #{fileName},#{fileType}, 
-				#{wno} )
+		values (workfile_seq.nextval, #{uploadPath}, #{fileName}, #{fileType}, #{wno} )
 	</update>
 	
 	<update id="deleteWorkFile">

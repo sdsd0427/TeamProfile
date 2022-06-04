@@ -81,7 +81,7 @@
 						<th>등록일</th>
 						<th style="width:10%;">조회수</th>
 					</tr>
-					<c:if test="${empty boardList }" >
+					<c:if test="${empty workBoardList }" >
 						<tr>
 							<td colspan="6">
 								<strong>해당 내용이 없습니다.</strong>
@@ -93,8 +93,15 @@
 							<td>${workBoard.wno }</td>
 							<td id="boardTitle" style="text-align:left;max-width: 100px; overflow: hidden;
 										 white-space: nowrap; text-overflow: ellipsis;">
-								<a href="javascript:OpenWindow('detail.do?from=list&pno=${workBoard.wno }','상세보기',800,700);">
-									<span class="col-sm-12 ">${workBoard.title }</span>
+								<a href="javascript:OpenWindow('detail.do?from=list&wno=${workBoard.wno }','상세보기',800,700);">
+									<span class="col-sm-12 ">${workBoard.title }
+										<c:if test="${workBoard.wreplycnt ne 0 }">
+											<span class="nav-item">
+											&nbsp;&nbsp;<i class="fa fa-comment"></i>
+											<span class="badge badge-warning navbar-badge">${workBoard.wreplycnt }</span>
+											</span>
+										</c:if>									
+									</span>
 								</a>
 							</td>
 							<td>

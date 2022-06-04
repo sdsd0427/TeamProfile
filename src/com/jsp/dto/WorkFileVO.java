@@ -2,7 +2,7 @@ package com.jsp.dto;
 
 public class WorkFileVO {
 	private int w_ano;
-	private String uploadpath;
+	private String uploadPath;
 	private String fileName;
 	private String fileType;
 	private int wno;
@@ -13,11 +13,11 @@ public class WorkFileVO {
 	public void setW_ano(int w_ano) {
 		this.w_ano = w_ano;
 	}
-	public String getUploadpath() {
-		return uploadpath;
+	public String getUploadPath() {
+		return uploadPath;
 	}
-	public void setUploadpath(String uploadpath) {
-		this.uploadpath = uploadpath;
+	public void setUploadpath(String uploadPath) {
+		this.uploadPath = uploadPath;
 	}
 	public String getFileName() {
 		return fileName;

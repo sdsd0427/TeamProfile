@@ -12,6 +12,7 @@ import com.jsp.command.Criteria;
 import com.jsp.command.PageMaker;
 import com.jsp.dao.WorkBoardDAO;
 import com.jsp.dao.WorkFileDAO;
+import com.jsp.dao.WreplyDAO;
 import com.jsp.dto.WorkBoardVO;
 import com.jsp.dto.WorkFileVO;
 
@@ -32,12 +33,24 @@ public class WorkBoardServiceImpl implements WorkBoardService {
 		this.workFileDAO = workFileDAO;
 	}
 	
+	private WreplyDAO wreplyDAO;
+	public void setWreplyDAO(WreplyDAO wreplyDAO) {
+		this.wreplyDAO = wreplyDAO;
+	}
+	
 	@Override
 	public Map<String, Object> getWorkBoardList(Criteria cri) throws SQLException {
 		SqlSession session = sqlSessionFactory.openSession();
 		try {
 			List<WorkBoardVO> workBoardList = workBoardDAO.selectWorkBoardCriteria(session, cri);
 		
+			// reply count 입력
+			if(workBoardList != null) for(WorkBoardVO wBoard : workBoardList) {
+				int replycnt = wreplyDAO.countWReply(session, wBoard.getWno());
+				System.out.println(replycnt);
+				wBoard.setWreplycnt(replycnt);
+			}
+			
 			if (workBoardList != null)
 				for (WorkBoardVO workBoard : workBoardList)
 					addWorkFileList(session, workBoard);
@@ -153,7 +166,7 @@ public class WorkBoardServiceImpl implements WorkBoardService {
 	}
 
 	@Override
-	public WorkFileVO getAttachByAno(int w_ano) throws SQLException {
+	public WorkFileVO getWorkFileByWAno(int w_ano) throws SQLException {
 		SqlSession session = sqlSessionFactory.openSession();
 		try {
 

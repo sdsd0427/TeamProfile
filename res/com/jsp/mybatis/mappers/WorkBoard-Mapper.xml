@@ -82,7 +82,7 @@
 		where wno=#{wno}
 	</update>
 	
-	<update id="deleteworkBoard" parameterType="int">
+	<update id="deleteWorkBoard" parameterType="int">
 		delete 
 		from work_Board 
 		where wno=#{wno}

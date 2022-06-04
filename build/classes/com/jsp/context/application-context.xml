@@ -8,14 +8,24 @@
 	<!-- Repository -->
 	<bean id="workBoardDAO" class="com.jsp.dao.WorkBoardDAOImpl" />
 	<bean id="workFileDAO" class="com.jsp.dao.WorkFileDAOImpl" />
+	<bean id="memberDAO" class="com.jsp.dao.MemberDAOImpl"/>
+	<bean id="wreplyDAO" class="com.jsp.dao.WreplyDAOImpl"/>
 	
 	<!-- Service -->
+	<bean id="wreplyService" class="com.jsp.service.WreplyServiceImpl" >
+		<property name="sqlSessionFactory" ref-value="sqlSessionFactory" />
+		<property name="wreplyDAO" ref-value="wreplyDAO" />		
+	</bean>
 	<bean id="workBoardService" class="com.jsp.service.WorkBoardServiceImpl" >
 		<property name="sqlSessionFactory" ref-value="sqlSessionFactory" />
 		<property name="workBoardDAO" ref-value="workBoardDAO" />		
 		<property name="workFileDAO" ref-value="workFileDAO" />		
+		<property name="wreplyDAO" ref-value="wreplyDAO" />		
 	</bean>
-	      
+	<bean id="memberService" class="com.jsp.service.MemberServiceImpl">
+		<property name="sqlSessionFactory" ref-value="sqlSessionFactory"/>
+		<property name="memberDAO" ref-value="memberDAO"/>
+	</bean>      
 	      
 
 </beans>

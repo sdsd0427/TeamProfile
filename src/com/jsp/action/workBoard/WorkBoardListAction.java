@@ -12,6 +12,7 @@ import com.jsp.controller.HttpRequestParameterAdapter;
 import com.jsp.service.WorkBoardService;
 
 public class WorkBoardListAction implements Action {
+	
 	private WorkBoardService workBoardService;
 
 	public void setWorkBoardService(WorkBoardService workBoardService) {
