@@ -128,7 +128,7 @@ public class WorkBoardServiceImpl implements WorkBoardService {
 			if (workBoard.getWorkFileList() != null)
 				for (WorkFileVO workFile : workBoard.getWorkFileList()) {
 					workFile.setWno(workBoard.getWno());
-					workBoardDAO.insertWorkBoard(session, workBoard);
+					workFileDAO.insertWorkFile(session, workFile);
 				}
 
 		} finally {

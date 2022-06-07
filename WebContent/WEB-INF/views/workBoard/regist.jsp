@@ -45,6 +45,11 @@
 					<div class="card-body">
 						<form enctype="multipart/form-data" role="form" method="post" action="regist.do" name="registForm">
 							<div class="form-group">
+								<label for="endDate">공고마감일</label> 
+								<input type="date" id="endDate"
+									name="endDate" class="form-control" value="${loginUser.id }">
+							</div>
+							<div class="form-group">
 								<label for="writer">작성자</label> 
 								<input type="text" id="writer" readonly
 									name="writer" class="form-control" value="${loginUser.id }">
