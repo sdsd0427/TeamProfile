@@ -2,7 +2,9 @@ package com.jsp.action.workBoard;
 
 import java.io.File;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -76,6 +78,16 @@ public class WorkBoardRegistAction implements Action {
 		workBoard.setContent(multi.getParameter("content"));
 		workBoard.setWriter(multi.getXSSParameter("writer"));
 		workBoard.setWorkFileList(workFileList);
+		String selectEnd = multi.getParameter("selectEnd");
+		if(selectEnd.equals("y")) {
+			String endDateStr = multi.getParameter("endDate");
+			System.out.println("endDateStr :" + endDateStr);
+			Date endDate = new SimpleDateFormat("yyyy-MM-dd").parse(endDateStr);
+			workBoard.setEndDate(endDate);
+		} else {
+			System.out.println("null");
+			workBoard.setEndDate(workBoard.getEndDate());
+		}
 		
 		try {
 			workBoardService.regist(workBoard);

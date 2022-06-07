@@ -11,10 +11,31 @@ public class WorkBoardVO {
 	private int viewcnt;
 	private Date updatedate;
 	private String writer;
+	private Date endDate = null;
+	
+	private String view;
 	
 	private int wreplycnt;
 	
 	private List<WorkFileVO> workFileList;
+
+	
+	
+	public String getView() {
+		return view;
+	}
+
+	public void setView(String view) {
+		this.view = view;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
 
 	public int getWno() {
 		return wno;

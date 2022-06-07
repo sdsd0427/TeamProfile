@@ -44,10 +44,16 @@
 					</div><!--end card-header  -->
 					<div class="card-body">
 						<form enctype="multipart/form-data" role="form" method="post" action="regist.do" name="registForm">
-							<div class="form-group">
-								<label for="endDate">공고마감일</label> 
-								<input type="date" id="endDate"
-									name="endDate" class="form-control" value="${loginUser.id }">
+							<div class="col-sm-12 row">
+								<select  class="form-control col-sm-6" name="selectEnd" id="selectEnd" onchange="change_go();">
+									<option value="n" selected >마감일 없음</option>
+									<option value="y" >마감일 있음</option>
+								</select >
+								<div class="form-group col-sm-6">
+									<label for="endDate">공고마감일</label> 
+									<input type="date" id="endDate"
+										name="endDate" class="form-control" disabled>
+								</div>
 							</div>
 							<div class="form-group">
 								<label for="writer">작성자</label> 
@@ -134,6 +140,15 @@ function regist_go(){
 	}
 	
 	$("form[role='form']").submit();
+}
+
+function change_go() {
+	var endCheck = $("#selectEnd").val();
+	if(endCheck == 'y'){
+		$('#endDate').attr("disabled", false);
+	} else {
+		$('#endDate').attr("disabled", true);
+	}
 }
 </script>
 

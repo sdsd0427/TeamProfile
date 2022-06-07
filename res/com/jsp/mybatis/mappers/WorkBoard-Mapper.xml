@@ -4,6 +4,14 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="WorkBoard-Mapper">
+	<sql id="endDate">
+		<if test="endDate != null">
+			#{endDate}		
+		</if>
+		<if test="endDate == null">
+			null	
+		</if>
+	</sql>
 	<sql id="search">
 		<if test="searchType == 't'.toString()">
 			and title like '%'||#{keyword}||'%'			
@@ -69,9 +77,9 @@
 	<update id="insertWorkBoard" parameterType="workBoard">
 		insert 
 		into 
-		work_Board(wno,title,writer,content)
+		work_Board(wno,title,writer,content,endDate)
 		values
-		(#{wno},#{title},#{writer},#{content})
+		(#{wno},#{title},#{writer},#{content},<include refid="endDate" />)
 	</update>
 	
 	<update id="updateWorkBoard" parameterType="workBoard">

@@ -1,6 +1,8 @@
 package com.jsp.service;
 
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -54,6 +56,17 @@ public class WorkBoardServiceImpl implements WorkBoardService {
 			if (workBoardList != null)
 				for (WorkBoardVO workBoard : workBoardList)
 					addWorkFileList(session, workBoard);
+			
+			//마감일
+			if (workBoardList != null) {
+				for (WorkBoardVO workBoard : workBoardList) {
+					Date endDate = workBoard.getEndDate();
+					Date today = new Date();
+					if(endDate != null && endDate.before(today)) {
+						workBoard.setView("end");
+					}
+				}
+			}
 			
 			PageMaker pageMaker = new PageMaker();
 			pageMaker.setCri(cri);

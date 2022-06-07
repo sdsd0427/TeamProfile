@@ -79,6 +79,7 @@
 						<th style="">첨부파일</th>
 						<th style="width:15%;">작성자</th>
 						<th>등록일</th>
+						<th style="">마감일</th>
 						<th style="width:10%;">조회수</th>
 					</tr>
 					<c:if test="${empty workBoardList }" >
@@ -91,6 +92,22 @@
 					<c:forEach items="${workBoardList }" var="workBoard">
 						<tr style='font-size:0.85em;'>
 							<td>${workBoard.wno }</td>
+							<c:if test="${workBoard.view eq 'end' }" >
+							<td id="boardTitle" style="text-align:left;max-width: 100px; overflow: hidden;
+										 white-space: nowrap; text-overflow: ellipsis; text-decoration:line-through;">
+								<a href="javascript:OpenWindow('detail.do?from=list&wno=${workBoard.wno }','상세보기',800,700);">
+									<span class="col-sm-12 ">${workBoard.title } (기간 마감)
+										<c:if test="${workBoard.wreplycnt ne 0 }">
+											<span class="nav-item">
+											&nbsp;&nbsp;<i class="fa fa-comment"></i>
+											<span class="badge badge-warning navbar-badge">${workBoard.wreplycnt }</span>
+											</span>
+										</c:if>									
+									</span>
+								</a>
+							</td>
+							</c:if>	
+							<c:if test="${workBoard.view ne 'end' }" >
 							<td id="boardTitle" style="text-align:left;max-width: 100px; overflow: hidden;
 										 white-space: nowrap; text-overflow: ellipsis;">
 								<a href="javascript:OpenWindow('detail.do?from=list&wno=${workBoard.wno }','상세보기',800,700);">
@@ -104,7 +121,8 @@
 									</span>
 								</a>
 							</td>
-							<td>
+							</c:if>	
+							<td style='text-decoration:none;'>
 								<c:if test="${!empty workBoard.workFileList }">
 									<i class="nav-icon fas fa-file"></i>
 								</c:if>
@@ -115,6 +133,14 @@
 							<td>${workBoard.writer }</td>
 							<td>
 								<fmt:formatDate value="${workBoard.regDate }" pattern="yyyy-MM-dd"/>
+							</td>
+							<td>
+								<c:if test="${!empty workBoard.endDate }">
+									<fmt:formatDate value="${workBoard.endDate }" pattern="yyyy-MM-dd"/>
+								</c:if>
+								<c:if test="${empty workBoard.endDate }">
+									<span>-</span>
+								</c:if>
 							</td>
 							<td><span class="badge bg-red">${workBoard.viewcnt }</span></td>
 						</tr>
