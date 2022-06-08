@@ -95,7 +95,7 @@
 							<c:if test="${workBoard.view eq 'end' }" >
 							<td id="boardTitle" style="text-align:left;max-width: 100px; overflow: hidden;
 										 white-space: nowrap; text-overflow: ellipsis; text-decoration:line-through;">
-								<a href="javascript:OpenWindow('detail.do?from=list&wno=${workBoard.wno }','상세보기',800,700);">
+								<a style=color:gray; href="javascript:OpenWindow('detail.do?from=list&wno=${workBoard.wno }','상세보기',800,700);">
 									<span class="col-sm-12 ">${workBoard.title } (기간 마감)
 										<c:if test="${workBoard.wreplycnt ne 0 }">
 											<span class="nav-item">

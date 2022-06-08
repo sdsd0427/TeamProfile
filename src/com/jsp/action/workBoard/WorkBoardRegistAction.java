@@ -81,7 +81,7 @@ public class WorkBoardRegistAction implements Action {
 		String selectEnd = multi.getParameter("selectEnd");
 		if(selectEnd.equals("y")) {
 			String endDateStr = multi.getParameter("endDate");
-			System.out.println("endDateStr :" + endDateStr);
+//			System.out.println("endDateStr :" + endDateStr);
 			Date endDate = new SimpleDateFormat("yyyy-MM-dd").parse(endDateStr);
 			workBoard.setEndDate(endDate);
 		} else {

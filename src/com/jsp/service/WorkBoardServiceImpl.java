@@ -171,7 +171,6 @@ public class WorkBoardServiceImpl implements WorkBoardService {
 			workBoardDAO.increaseViewCnt(session, wno);
 			
 			addWorkFileList(session, workBoard);
-			
 			return workBoard;
 		} finally {
 			session.close();

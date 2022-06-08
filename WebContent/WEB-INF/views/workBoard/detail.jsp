@@ -33,14 +33,24 @@
 			<div class="col-md-12">
 				<div class="card card-outline card-primary">
 					<div class="card-header">
-						<h3 class="card-title">상세보기</h3>
+						<p class="card-title">상세보기</p>
 						<div class ="card-tools">
-							<button type="button" id="modifyBtn" class="btn btn-warning" onclick="modify_go(${workBoard.wno});">Modify</button>						
-					    	<button type="button" id="removeBtn" class="btn btn-danger" onclick="remove_go(${workBoard.wno});">REMOVE</button>
+							<button type="button" id="modifyBtn" class="btn btn-warning" ${loginUser.id!=workBoard.writer ? 'hidden':'' }  onclick="modify_go(${workBoard.wno});">Modify</button>						
+					    	<button type="button" id="removeBtn" class="btn btn-danger" ${loginUser.id!=workBoard.writer ? 'hidden':'' }  onclick="remove_go(${workBoard.wno});">REMOVE</button>
 					    	<button type="button" id="listBtn" class="btn btn-primary" onclick="CloseWindow();">CLOSE </button>
 				    	</div>
 					</div>
 					<div class="card-body">
+						<label for="end">공고마감일</label> 
+						<div class="col-sm-12 row" id="end">
+							<select  class="form-control col-sm-4" name="selectEnd" id="selectEnd" onchange="change_go();" disabled>
+								<option value="n" ${workBoard.endDate==null ? 'selected':'' } >마감일 없음</option>
+								<option value="y" ${workBoard.endDate!=null ? 'selected':'' } >마감일 있음</option>
+							</select >
+							<div class="form-group col-sm-8">
+								<input type="date" id="endDate" name="endDate" class="form-control" value="${endStr}" disabled >
+							</div>
+						</div>
 						<div class="form-group col-sm-12">
 							<label for="title">제 목</label>
 							<input type="text" class="form-control" id="title" 
@@ -158,6 +168,7 @@
         <button type="button" class="btn btn-info" id="replyModBtn" onclick="replyModify_go();">Modify</button>
         <button type="button" class="btn btn-danger" id="replyDelBtn" onclick="replyRemove_go();">DELETE</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		
       </div>
     </div>
   </div>

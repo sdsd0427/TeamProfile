@@ -86,7 +86,7 @@
 		update 
 		work_Board
 		set 
-		title=#{title}, content=#{content}, updatedate=sysdate 
+		title=#{title}, content=#{content}, updatedate=sysdate, endDate=<include refid="endDate" /> 
 		where wno=#{wno}
 	</update>
 	

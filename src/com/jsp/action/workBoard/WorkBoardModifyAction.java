@@ -1,7 +1,9 @@
 package com.jsp.action.workBoard;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -94,6 +96,14 @@ public class WorkBoardModifyAction implements Action {
 			workBoard.setContent(multi.getParameter("content"));
 			workBoard.setWriter(multi.getXSSParameter("writer"));
 			workBoard.setWorkFileList(workFileList);
+			String selectEnd = multi.getParameter("selectEnd");
+			if(selectEnd.equals("y")) {
+				String endDateStr = multi.getParameter("endDate");
+				Date endDate = new SimpleDateFormat("yyyy-MM-dd").parse(endDateStr);
+				workBoard.setEndDate(endDate);
+			} else {
+				workBoard.setEndDate(null);
+			}
 			
 			return workBoard;
 		}

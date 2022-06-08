@@ -25,7 +25,7 @@
 	       		<div class="col-sm-6">
 			      <ol class="breadcrumb float-sm-right">
 			        <li class="breadcrumb-item"><a href="list.do"><i class="fa fa-dashboard"></i>취업정보방</a></li>
-			        <li class="breadcrumb-item active">리스트</li>		        
+			        <li class="breadcrumb-item active">수정</li>		        
 			      </ol>
 		      	</div>
 	     	</div>	     	
@@ -38,12 +38,27 @@
 			<div class="col-md-12">
 				<div class="card card-outline card-primary">
 					<div class="card-header">
-						<h3>취업정보 수정</h3>
+							<h3>취업정보 수정</h3>
+							<div class ="card-tools">
+								<button type="button" class="btn btn-warning" id="modifyBtn" onclick="modify_submit();">수 정</button>
+								&nbsp;&nbsp;&nbsp;&nbsp;
+								<button type="button" class="btn" id="cancelBtn" onclick="history.go(-1);">취 소</button>	
+							</div>
+						</div>
 					</div><!--end card-header  -->
 					<div class="card-body">
 						<form enctype="multipart/form-data" role="form" method="post" action="modify.do" name="modifyForm">
 							<input type="hidden" name="wno" value="${workBoard.wno }" />
-							
+							<label for="end">공고마감일</label> 
+							<div class="col-sm-12 row" id="end">
+								<select  class="form-control col-sm-4" name="selectEnd" id="selectEnd" onchange="change_go();">
+									<option value="n" ${workBoard.endDate==null ? 'selected':'' } >마감일 없음</option>
+									<option value="y" ${workBoard.endDate!=null ? 'selected':'' } >마감일 있음</option>
+								</select >
+								<div class="form-group col-sm-8">
+									<input type="date" id="endDate" name="endDate" class="form-control" value="${endStr}" ${workBoard.endDate==null ? 'disabled':'' }  >
+								</div>
+							</div>							
 							<div class="form-group">
 								<label for="writer">작성자</label> 
 								<input type="text" id="writer" readonly
@@ -91,9 +106,7 @@
 						</form>
 					</div><!--end card-body  -->
 					<div class="card-footer">
-						<button type="button" class="btn btn-warning" id="modifyBtn" onclick="modify_submit();">수 정</button>
-						&nbsp;&nbsp;&nbsp;&nbsp;
-						<button type="button" class="btn" id="cancelBtn" onclick="history.go(-1);">취 소</button>
+
 					</div><!--end card-footer  -->
 				</div><!-- end card -->				
 			</div><!-- end col-md-12 -->
@@ -171,6 +184,15 @@ function modify_submit(){
 	form.submit();
 }
 
+function change_go() {
+	var endCheck = $("#selectEnd").val();
+	if(endCheck == 'y'){
+		$('#endDate').attr("disabled", false);
+	} else {
+		$('#endDate').attr("disabled", true);
+		$('#endDate').val("");
+	}
+}
 
 </script>
     

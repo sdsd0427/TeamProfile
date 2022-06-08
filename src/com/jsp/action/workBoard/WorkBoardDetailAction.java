@@ -1,5 +1,7 @@
 package com.jsp.action.workBoard;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -37,6 +39,11 @@ public class WorkBoardDetailAction implements Action {
 			
 			List<WorkFileVO> renamedWorkFileList = MakeFileName.parseFileNameFromWorkFile(workBoard.getWorkFileList(), "\\$\\$");
 			workBoard.setWorkFileList(renamedWorkFileList);
+			
+			if(workBoard.getEndDate() != null) {
+				String endStr = new SimpleDateFormat("yyyy-MM-dd").format(workBoard.getEndDate());
+				request.setAttribute("endStr", endStr);
+			}
 			
 			request.setAttribute("workBoard", workBoard);
 			

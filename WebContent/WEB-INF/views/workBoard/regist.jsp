@@ -16,13 +16,13 @@
     	<div class="container-fluid">
     		<div class="row mb-2">
     			<div class="col-sm-6">
-	      			<h1>취업준비방</h1>
+	      			<h1>취업정보방</h1>
 	      		</div>	      		
 	    	
 	       		
 	       		<div class="col-sm-6">
 			      <ol class="breadcrumb float-sm-right">
-			        <li class="breadcrumb-item"><a href="list.do"><i class="fa fa-dashboard"></i>취업준비방</a></li>
+			        <li class="breadcrumb-item"><a href="list.do"><i class="fa fa-dashboard"></i>취업정보방</a></li>
 			        <li class="breadcrumb-item active">취업정보등록</li>		        
 			      </ol>
 		      	</div>
@@ -44,13 +44,13 @@
 					</div><!--end card-header  -->
 					<div class="card-body">
 						<form enctype="multipart/form-data" role="form" method="post" action="regist.do" name="registForm">
-							<div class="col-sm-12 row">
-								<select  class="form-control col-sm-6" name="selectEnd" id="selectEnd" onchange="change_go();">
+							<label for="end">공고마감일</label> 
+							<div class="col-sm-12 row" id="end">
+								<select  class="form-control col-sm-4" name="selectEnd" id="selectEnd" onchange="change_go();">
 									<option value="n" selected >마감일 없음</option>
 									<option value="y" >마감일 있음</option>
 								</select >
-								<div class="form-group col-sm-6">
-									<label for="endDate">공고마감일</label> 
+								<div class="form-group col-sm-8">
 									<input type="date" id="endDate"
 										name="endDate" class="form-control" disabled>
 								</div>
@@ -148,6 +148,7 @@ function change_go() {
 		$('#endDate').attr("disabled", false);
 	} else {
 		$('#endDate').attr("disabled", true);
+		$('#endDate').val("");
 	}
 }
 </script>
