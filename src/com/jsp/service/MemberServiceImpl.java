@@ -40,7 +40,7 @@ public class MemberServiceImpl {
 		SqlSession session = sqlSessionFactory.openSession();
 		
 		try {
-			MemberVO member = memberDAO.seletMemberById(session, id);
+			MemberVO member = memberDAO.selectMemberById(session, id);
 			
 			return member;
 		}finally {
@@ -52,7 +52,7 @@ public class MemberServiceImpl {
 		SqlSession session = sqlSessionFactory.openSession();
 		
 		try {
-			MemberVO member = memberDAO.seletMemberById(session, id);
+			MemberVO member = memberDAO.selectMemberById(session, id);
 			
 			if(member == null) {
 				throw new NotFoundIdException();

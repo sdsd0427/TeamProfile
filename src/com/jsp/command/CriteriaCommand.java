@@ -1,11 +1,11 @@
 package com.jsp.command;
 
 public class CriteriaCommand {
+
 	private String page;
 	private String perPageNum;
 	private String keyword;
 	private String searchType;
-	
 	
 	public String getPage() {
 		return page;
@@ -31,7 +31,6 @@ public class CriteriaCommand {
 	public void setSearchType(String searchType) {
 		this.searchType = searchType;
 	}
-	
 	public Criteria toCriteria() {
 		Criteria cri = new Criteria();
 		

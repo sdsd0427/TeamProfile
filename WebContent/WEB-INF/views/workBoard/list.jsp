@@ -76,10 +76,10 @@
 					<tr style="font-size:0.95em;">
 						<th style="width:10%;">번 호</th>
 						<th style="width:40%;">제 목</th>
-						<th style="">첨부파일</th>
-						<th style="width:15%;">작성자</th>
-						<th>등록일</th>
-						<th style="">마감일</th>
+						<th style="width:10%;">첨부파일</th>
+						<th style="width:10%;">작성자</th>
+						<th style="width:10%;">등록일</th>
+						<th style="width:10%;">마감일</th>
 						<th style="width:10%;">조회수</th>
 					</tr>
 					<c:if test="${empty workBoardList }" >

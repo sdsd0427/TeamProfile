@@ -15,7 +15,7 @@ public class MemberDAOImpl {
 		return memberList;
 	}
 	
-	public MemberVO seletMemberById(SqlSession session, String id) throws SQLException{
+	public MemberVO selectMemberById(SqlSession session, String id) throws SQLException{
 		MemberVO member = session.selectOne("Member-Mapper.selectMemberById", id);
 		
 		return member;

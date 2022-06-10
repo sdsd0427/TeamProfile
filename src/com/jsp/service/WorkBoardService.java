@@ -33,4 +33,7 @@ public interface WorkBoardService {
 	//파일정보 삭제
 	void removeAttachByAno(int w_ano)throws SQLException;
 	
+	//마감임박 목록
+	Map<String,Object> getDeadWordBoardList(Criteria cri) throws SQLException;
+	
 }

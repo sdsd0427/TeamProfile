@@ -35,9 +35,9 @@
 					<div class="card-header">
 						<p class="card-title">상세보기</p>
 						<div class ="card-tools">
-							<button type="button" id="modifyBtn" class="btn btn-warning" ${loginUser.id!=workBoard.writer ? 'hidden':'' }  onclick="modify_go(${workBoard.wno});">Modify</button>						
-					    	<button type="button" id="removeBtn" class="btn btn-danger" ${loginUser.id!=workBoard.writer ? 'hidden':'' }  onclick="remove_go(${workBoard.wno});">REMOVE</button>
-					    	<button type="button" id="listBtn" class="btn btn-primary" onclick="CloseWindow();">CLOSE </button>
+							<button type="button" id="modifyBtn" class="btn btn-warning" ${loginUser.id!=workBoard.writer ? 'hidden':'' }  onclick="modify_go(${workBoard.wno});">수정</button>						
+					    	<button type="button" id="removeBtn" class="btn btn-danger" ${loginUser.id!=workBoard.writer ? 'hidden':'' }  onclick="remove_go(${workBoard.wno});">삭제</button>
+					    	<button type="button" id="listBtn" class="btn btn-primary" onclick="CloseWindow();">닫기 </button>
 				    	</div>
 					</div>
 					<div class="card-body">
@@ -128,7 +128,7 @@
 						<div class="timeline">
 							<!-- timeline time label -->
 							<div class="time-label" id="repliesDiv">
-								<span class="bg-green">Replies List </span>							
+								<span class="bg-green">댓글 목록 </span>							
 							</div>
 							
 							
@@ -140,10 +140,10 @@
 						</div>
 					</div>
 					<div class="card-footer">
-						<label for="newReplyText">Reply Text</label>
+						<label for="newReplyText">댓글</label>
 						<input class="form-control" type="text"	placeholder="REPLY TEXT" id="newReplyText">
 						<br/>
-						<button type="button" class="btn btn-primary" id="replyAddBtn" onclick="replyRegist_go();">ADD REPLY</button>
+						<button type="button" class="btn btn-primary" id="replyAddBtn" onclick="replyRegist_go();">작성</button>
 					</div>				
 				</div>			
 				
@@ -165,9 +165,9 @@
         <p><input type="text" id="replytext" class="form-control"></p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-info" id="replyModBtn" onclick="replyModify_go();">Modify</button>
-        <button type="button" class="btn btn-danger" id="replyDelBtn" onclick="replyRemove_go();">DELETE</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-info" id="replyModBtn" onclick="replyModify_go();">수정</button>
+        <button type="button" class="btn btn-danger" id="replyDelBtn" onclick="replyRemove_go();">삭제</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
 		
       </div>
     </div>

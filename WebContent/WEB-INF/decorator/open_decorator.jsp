@@ -4,7 +4,6 @@
     
 <%@ include file="./open/header.jsp" %>
 
-
 <decorator:body />
 
 

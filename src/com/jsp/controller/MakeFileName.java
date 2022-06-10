@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import com.jsp.dto.PFileVO;
 import com.jsp.dto.WorkFileVO;
 
 public class MakeFileName {
@@ -18,6 +19,23 @@ public class MakeFileName {
 				String delimiter) {
 		String[] uuidFileName = fileName.split(delimiter);
 		return uuidFileName[uuidFileName.length - 1];
+	}
+	
+	public static List<PFileVO> parseFileNameFromAttaches(List<PFileVO> pfileList, String delimiter){
+		List<PFileVO> renamedPfileList = new ArrayList<PFileVO>();
+		
+		if(pfileList != null) {
+			for(PFileVO pfile : pfileList) {
+				String fileName = pfile.getFilename();
+				fileName = parseFileNameFromUUID(fileName, delimiter);
+				
+				pfile.setFilename(fileName);
+				
+				renamedPfileList.add(pfile);
+			}
+		}
+		
+		return renamedPfileList;
 	}
 	
 	public static List<WorkFileVO> parseFileNameFromWorkFile(List<WorkFileVO> workFileList, String delimiter){

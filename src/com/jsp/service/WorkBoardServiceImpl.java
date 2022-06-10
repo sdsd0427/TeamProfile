@@ -2,6 +2,8 @@ package com.jsp.service;
 
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -49,7 +51,6 @@ public class WorkBoardServiceImpl implements WorkBoardService {
 			// reply count 입력
 			if(workBoardList != null) for(WorkBoardVO wBoard : workBoardList) {
 				int replycnt = wreplyDAO.countWReply(session, wBoard.getWno());
-				System.out.println(replycnt);
 				wBoard.setWreplycnt(replycnt);
 			}
 			
@@ -201,6 +202,49 @@ public class WorkBoardServiceImpl implements WorkBoardService {
 			session.close();
 		}
 
+	}
+
+	@Override
+	public Map<String, Object> getDeadWordBoardList(Criteria cri) throws SQLException {
+		SqlSession session = sqlSessionFactory.openSession();
+		try {
+			List<WorkBoardVO> workBoardList = workBoardDAO.selectWorkBoardCriteria(session, cri);
+			List<WorkBoardVO> deadWordBoardList = new ArrayList<WorkBoardVO>();
+			
+			// reply count 입력
+			if(workBoardList != null) for(WorkBoardVO wBoard : workBoardList) {
+				Date endDate = wBoard.getEndDate();
+				Date today = new Date();
+				if(endDate != null && endDate.before(today)) {
+					wBoard.setView("end");
+				}
+				
+				if(wBoard.getEndDate() != null) {
+					Calendar cal = Calendar.getInstance();
+					cal.setTime(today);
+					cal.add(Calendar.DATE, 3);
+					boolean deadline = cal.getTime().after(endDate);
+					if(endDate.after(today) && deadline) {					
+						deadWordBoardList.add(wBoard);
+						int replycnt = wreplyDAO.countWReply(session, wBoard.getWno());
+						wBoard.setWreplycnt(replycnt);
+						addWorkFileList(session, wBoard);
+					}
+				}
+			}
+			
+			PageMaker pageMaker = new PageMaker();
+			pageMaker.setCri(cri);
+			pageMaker.setTotalCount(deadWordBoardList.size());
+
+			Map<String, Object> dataMap = new HashMap<String, Object>();
+			dataMap.put("workBoardList", deadWordBoardList);
+			dataMap.put("pageMaker", pageMaker);
+
+			return dataMap;
+		} finally {
+			session.close();
+		}
 	}
 
 }
